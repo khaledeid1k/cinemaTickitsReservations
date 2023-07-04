@@ -61,6 +61,9 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
     implementation(libs.accompanist)
+    implementation(libs.constraintlayout)
+    implementation(libs.hilt)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

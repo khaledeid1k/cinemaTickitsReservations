@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">first project compose</string>
+    <string name="time">2h 23m</string>
+
+    <string name="rate1t1">6.8</string>
+    <string name="rate1t2">/10</string>
+    <string name="rate1t3">IMDB</string>
+
+    <string name="rate2t1">63%</string>
+    <string name="rate2t3">Rotten Tomatoes</string>
+
+    <string name="rate3t1">4</string>
+    <string name="rate3t3">IGN</string>
+    <string name="nameOfMovie">Fantastic Beats:The\nSecrets of Dumbledore</string>
+    <string name="type1">Fantasy</string>
+    <string name="type2">Adventure</string>
+    <string name="description">"Professor Albus Dumbledore knows the powerful,\n"
+                        "dark wizard Gellert Grindelwald is moving to seize\n"
+                        "control of the wizarding world. Unable to stop him…"</string>
+
+    <string name="booking">Booking</string>
+
+
+
 </resources>
