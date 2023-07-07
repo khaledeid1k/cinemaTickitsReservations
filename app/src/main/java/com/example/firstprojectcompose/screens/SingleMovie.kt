@@ -77,7 +77,7 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 @Preview
 @Composable
 fun SingleMovie(
-    viewModel :CharacterViewModel= hiltViewModel()
+    viewModel: CharacterViewModel = hiltViewModel()
 
 ) {
     val state by viewModel.state.collectAsState()
@@ -94,22 +94,23 @@ fun SingleMovie(
         val chain = createHorizontalChain()
         val (backgroundIMage, card, play, close, time, rate1) = createRefs()
         Image(
-            painter = painterResource(id = R.drawable.first_photo),
+            painter = painterResource(id = R.drawable.first_image),
             contentDescription = "",
             modifier = Modifier
                 .constrainAs(backgroundIMage) {
                     top.linkTo(parent.top)
-                }
-                .height(350.dp)
-                .fillMaxWidth(),
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
 
+                }.fillMaxWidth()
+                .height(420.dp)
+            ,
             contentScale = ContentScale.FillWidth,
 
             )
         Box(modifier = Modifier
             .clip(CircleShape)
             .size(30.dp)
-
             .background(brown)
             .constrainAs(close) {
                 top.linkTo(parent.top, margin = 32.dp)
@@ -130,8 +131,8 @@ fun SingleMovie(
 
         Box(
             modifier = Modifier
-                .height(20.dp)
-                .width(80.dp)
+                .height(22.dp)
+                .width(90.dp)
                 .clip(
                     shape = RoundedCornerShape(5.dp)
                 )
@@ -146,6 +147,7 @@ fun SingleMovie(
 
                 Image(
                     modifier = Modifier
+                        .wrapContentSize()
                         .padding(2.dp)
                         .clip(CircleShape)
                         .size(20.dp),
@@ -153,7 +155,11 @@ fun SingleMovie(
                     painter = painterResource(R.drawable.time),
                     contentDescription = "",
                 )
-                Text(text = stringResource(id = R.string.time), color = withe)
+                Text(
+                    modifier = Modifier.fillMaxSize(),
+                    text = stringResource(id = R.string.time),
+                    color = withe
+                )
 
             }
 
@@ -168,6 +174,7 @@ fun SingleMovie(
                 end.linkTo(backgroundIMage.end)
                 top.linkTo(backgroundIMage.top)
                 bottom.linkTo(backgroundIMage.bottom)
+
             }) {
             Image(
                 modifier = Modifier
@@ -178,17 +185,13 @@ fun SingleMovie(
             )
         }
 
-        Card(
+        Box(
             modifier = Modifier
-
                 .constrainAs(card) {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     bottom.linkTo(parent.bottom)
-                    top.linkTo(play.bottom, margin = 130.dp)
-
                 }
-
 
                 .clip(
                     shape = RoundedCornerShape(
@@ -200,41 +203,39 @@ fun SingleMovie(
 
         ) {
             ConstraintLayout(
-
                 modifier =
                 Modifier
-
                     .background(withe)
-                    .padding(top = 20.dp, bottom = 120.dp)
             ) {
                 val (rate1, rate2, rate3, nameOfMovie, type1,
-                    type2,booking,
-                    listOfCharacters,description) = createRefs()
+                    type2, booking,
+                    listOfCharacters, description) = createRefs()
                 val chainOfRate = createHorizontalChain(rate1, rate2, rate3)
-                val chainOfType =
-                    createHorizontalChain(type1,type2,
-                    chainStyle =ChainStyle.Packed)
-
+                val chFainOfType =
+                    createHorizontalChain(
+                        type1, type2,
+                        chainStyle = ChainStyle.Packed
+                    )
 
                 singleRate(
                     modifier =
                     Modifier.constrainAs(rate1) {},
-                    text1 = stringResource(id = R.string.rate1t1)
-                    , text2 = stringResource(id = R.string.rate1t2),
+                    text1 = stringResource(id = R.string.rate1t1),
+                    text2 = stringResource(id = R.string.rate1t2),
                     text3 = stringResource(id = R.string.rate1t3)
                 )
                 singleRate(
                     modifier =
                     Modifier.constrainAs(rate2) {},
-                    text1 =  stringResource(id = R.string.rate2t1),
-                    text3 =  stringResource(id = R.string.rate2t3)
+                    text1 = stringResource(id = R.string.rate2t1),
+                    text3 = stringResource(id = R.string.rate2t3)
                 )
                 singleRate(
                     modifier =
                     Modifier.constrainAs(rate3) {},
                     text1 = stringResource(id = R.string.rate3t1),
                     text2 = stringResource(id = R.string.rate1t2),
-                    text3 =stringResource(id = R.string.rate3t3)
+                    text3 = stringResource(id = R.string.rate3t3)
                 )
 
                 Text(
@@ -265,15 +266,12 @@ fun SingleMovie(
                     })
 
 
-                characters(state,modifier= Modifier.
-
-                constrainAs(listOfCharacters){
+                characters(state, modifier = Modifier.constrainAs(listOfCharacters) {
                     top.linkTo(type1.bottom)
                 })
-                Text(text = stringResource(id = R.string.description)
-                    ,modifier= Modifier.
-
-                    constrainAs(description){
+                Text(
+                    text = stringResource(id = R.string.description),
+                    modifier = Modifier.constrainAs(description) {
                         top.linkTo(listOfCharacters.bottom)
                         end.linkTo(parent.end)
                         start.linkTo(parent.start)
@@ -281,37 +279,41 @@ fun SingleMovie(
                     style = TextStyle(fontSize = 15.sp, color = black)
                 )
 
-                Row (modifier = Modifier
+                Row(modifier = Modifier
                     .wrapContentSize()
                     .constrainAs(booking) {
-                        top.linkTo(description.bottom, margin = 32.dp)
                         end.linkTo(parent.end)
                         start.linkTo(parent.start)
+                        top.linkTo(description.bottom, margin = 16.dp)
+                        bottom.linkTo(parent.bottom, margin = 16.dp)
                     }
                     .clip(
                         shape = RoundedCornerShape(40.dp)
                     )
-                    .background(orange)){
+                    .background(orange)) {
                     Image(
                         painter = painterResource(id = R.drawable.booking),
                         contentDescription = "",
-                        modifier = Modifier.padding(top=9.dp, start = 23.dp, bottom = 12.dp, end = 6.dp)
+                        modifier = Modifier
+                            .padding(
+                                top = 5.dp,
+                                start = 23.dp,
+                                bottom = 8.dp,
+                                end = 6.dp
+                            )
                             .height(35.dp)
-                          )
-                    Text(text = stringResource(
-                        id = R.string.booking),
+                    )
+                    Text(
+                        text = stringResource(
+                            id = R.string.booking
+                        ),
                         style = TextStyle(fontSize = 20.sp, color = withe),
-                        modifier = Modifier.padding(top=12.dp, end = 23.dp, bottom = 12.dp),
+                        modifier = Modifier.padding(top = 8.dp, end = 23.dp, bottom = 8.dp),
                         textAlign = TextAlign.Center,
-
-
-                        )
+                    )
 
                 }
             }
-
-
-
 
 
         }
@@ -320,14 +322,16 @@ fun SingleMovie(
 }
 
 @Composable
-fun characters( state:CharacterUiState,
-                modifier :Modifier = Modifier,
-){
-    LazyRow(modifier = modifier.wrapContentSize(),
+fun characters(
+    state: CharacterUiState,
+    modifier: Modifier = Modifier,
+) {
+    LazyRow(
+        modifier = modifier.wrapContentSize(),
         contentPadding = PaddingValues(16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp)
-    ){
-        items(state.photos){
+    ) {
+        items(state.photos) {
             characterItem(character = it)
 
         }

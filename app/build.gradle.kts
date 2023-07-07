@@ -63,6 +63,8 @@ dependencies {
     implementation(libs.accompanist)
     implementation(libs.constraintlayout)
     implementation(libs.hilt)
+    implementation(libs.ui.compose)
+    implementation(libs.coil)
 
 
     testImplementation(libs.junit)

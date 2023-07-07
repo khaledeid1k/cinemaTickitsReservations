@@ -11,6 +11,7 @@ compose-bom = "2023.03.00"
 accompanist = "0.30.1"
 constraintlayout = "1.0.1"
 hilt = "1.0.0"
+coil = "2.4.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -30,6 +31,8 @@ material3 = { group = "androidx.compose.material3", name = "material3" }
 accompanist = { group = "com.google.accompanist", name = "accompanist-systemuicontroller",version.ref= "accompanist"}
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout-compose",version.ref= "constraintlayout"}
 hilt = { group = "androidx.hilt", name = "hilt-navigation-compose",version.ref= "hilt"}
+ui-compose = { group = "androidx.compose.ui", name = "ui-util"}
+coil = { group = "io.coil-kt", name = "coil-svg",version.ref= "coil"}
 
 
 [plugins]

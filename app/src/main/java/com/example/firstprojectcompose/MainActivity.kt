@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.firstprojectcompose.screens.SingleMovie
+import com.example.firstprojectcompose.screens.movies
 import com.example.firstprojectcompose.ui.theme.FirstProjectComposeTheme
 import com.google.accompanist.systemuicontroller.SystemUiController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController

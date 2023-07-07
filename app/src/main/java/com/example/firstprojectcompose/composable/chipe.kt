@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.firstprojectcompose.ui.theme.black
@@ -29,25 +30,32 @@ fun chip(
     text : String ,
      modifier :Modifier = Modifier,
      modifierText :Modifier = Modifier,
-    backgroundText: Color= withe
+    backgroundText: Color= withe,
+    backgroundBox: Color= withe,
+    backgroundBorder: Color= low_gray,
+    textColor: Color= black,
+    textVerticalPadding: Dp = 2.dp,
+    textHorizontalPadding: Dp = 0.dp,
+
+
 
 ){
     Box(
         modifier = modifier
             .wrapContentSize()
             .clip(shape = RoundedCornerShape(15.dp))
-            .background(withe)
-            .border(BorderStroke(1.dp, low_gray,),shape = CircleShape)
+            .background(backgroundBox)
+            .border(BorderStroke(1.dp, backgroundBorder,),shape = CircleShape)
 
     ) {
         Text(
             text = text,
             textAlign = TextAlign.Center,
             modifier = modifierText
-                .padding(top=2.dp, bottom = 2.dp)
+                .padding(vertical =textVerticalPadding, horizontal =textHorizontalPadding  )
                 .background(backgroundText)
                 .padding(horizontal = 16.dp),
-            style = TextStyle(fontSize = 15.sp, color = black)
+            style = TextStyle(fontSize = 15.sp, color = textColor)
 
         )
 
